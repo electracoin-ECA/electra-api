@@ -1,0 +1,11 @@
+*.dll
+*.dylib
+*.exe
+*.exe~
+*.so
+*.test
+.DS_Store
+
+/electra-api
+
+/.vscode
