@@ -1,0 +1,68 @@
+{
+	"ImportPath": "github.com/Electra-project/electra-api",
+	"GoVersion": "go1.9",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/gin-contrib/sse",
+			"Rev": "22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin",
+			"Comment": "v1.2-139-ga712f77",
+			"Rev": "a712f77d7aaec7eb4766a663924aaa4e54d3fe70"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/binding",
+			"Comment": "v1.2-139-ga712f77",
+			"Rev": "a712f77d7aaec7eb4766a663924aaa4e54d3fe70"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/json",
+			"Comment": "v1.2-139-ga712f77",
+			"Rev": "a712f77d7aaec7eb4766a663924aaa4e54d3fe70"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/render",
+			"Comment": "v1.2-139-ga712f77",
+			"Rev": "a712f77d7aaec7eb4766a663924aaa4e54d3fe70"
+		},
+		{
+			"ImportPath": "github.com/golang/protobuf/proto",
+			"Rev": "1e59b77b52bf8e4b449a57e6f79f21226d571845"
+		},
+		{
+			"ImportPath": "github.com/json-iterator/go",
+			"Comment": "1.0.4-19-gc3ed5e8",
+			"Rev": "c3ed5e85e01b662dce06b590ba4262266acbc73a"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-isatty",
+			"Comment": "v0.0.3-7-g6ca4dbf",
+			"Rev": "6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c"
+		},
+		{
+			"ImportPath": "github.com/patrickmn/go-cache",
+			"Comment": "v2.1.0",
+			"Rev": "a3647f8e31d79543b2d0f0ae2fe5c379d72cedc0"
+		},
+		{
+			"ImportPath": "github.com/ugorji/go/codec",
+			"Comment": "v.1.1-beta-24-g9831f2c",
+			"Rev": "9831f2c3ac1068a78f50999a30db84270f647af6"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "2c42eef0765b9837fbdab12011af7830f55f88f0"
+		},
+		{
+			"ImportPath": "gopkg.in/go-playground/validator.v8",
+			"Comment": "v8.18.2",
+			"Rev": "5f1438d3fca68893a817e4a66806cea46a9e4ebf"
+		},
+		{
+			"ImportPath": "gopkg.in/yaml.v2",
+			"Rev": "d670f9405373e636a5a2765eea47fac0c9bc91a4"
+		}
+	]
+}
