@@ -1,22 +1,10 @@
 package main
 
 import (
-	"os"
-
 	"github.com/Electra-project/electra-api/src/api"
 	"github.com/Electra-project/electra-api/src/middlewares"
 	"github.com/gin-gonic/gin"
 )
-
-func getPort() string {
-	envPort := os.Getenv("PORT")
-
-	if envPort == "" {
-		return "8080"
-	}
-
-	return envPort
-}
 
 func main() {
 	router := gin.Default()
@@ -32,5 +20,5 @@ func main() {
 		v1.GET("/price/:currency", api.GetPrice)
 	}
 
-	router.Run(":" + getPort())
+	router.Run()
 }
