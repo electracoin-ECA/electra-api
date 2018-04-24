@@ -2,7 +2,6 @@ package api
 
 import (
 	"net/http"
-	"time"
 
 	"github.com/Electra-project/electra-api/src/helpers"
 	"github.com/gin-gonic/gin"
@@ -32,7 +31,6 @@ type requestResponseDataEntry struct {
 type responseData struct {
 	price    string
 	priceBtc string
-	time     string
 }
 
 // GetPrice gets the current CoinMarketCap Electra price.
@@ -50,8 +48,6 @@ func GetPrice(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"price":    cacheData.(*responseData).price,
 			"priceBtc": cacheData.(*responseData).priceBtc,
-			"time":     cacheData.(*responseData).time,
-			"cache":    true,
 		})
 
 		return
@@ -69,14 +65,11 @@ func GetPrice(c *gin.Context) {
 	data := &responseData{
 		price:    inputData[0].PriceUSD,
 		priceBtc: inputData[0].PriceBTC,
-		time:     time.Now().String(),
 	}
 	helpers.CacheInstance.Set(cacheKey, data, cache.DefaultExpiration)
 
 	c.JSON(http.StatusOK, gin.H{
 		"price":    data.price,
 		"priceBtc": data.priceBtc,
-		"time":     data.time,
-		"cached":   false,
 	})
 }
