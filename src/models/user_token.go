@@ -3,8 +3,8 @@ package models
 import (
 	"time"
 
-	"github.com/Electra-project/electra-auth/src/database"
-	"github.com/Electra-project/electra-auth/src/libs/mnemonic"
+	"github.com/Electra-project/electra-api/src/database"
+	"github.com/Electra-project/electra-api/src/libs/mnemonic"
 	"github.com/globalsign/mgo/bson"
 )
 
