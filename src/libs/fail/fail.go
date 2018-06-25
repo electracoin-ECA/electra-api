@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/Electra-project/electra-auth/src/helpers"
+	"github.com/Electra-project/electra-api/src/helpers"
 	"github.com/gin-gonic/gin"
 )
 
