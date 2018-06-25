@@ -3,7 +3,7 @@ package controllers
 import (
 	"net/http"
 
-	"github.com/Electra-project/electra-auth/src/libs/fail"
+	"github.com/Electra-project/electra-api/src/libs/fail"
 	"github.com/gin-gonic/gin"
 )
 
