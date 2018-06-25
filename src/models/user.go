@@ -4,8 +4,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/Electra-project/electra-auth/src/database"
-	"github.com/Electra-project/electra-auth/src/helpers"
+	"github.com/Electra-project/electra-api/src/database"
+	"github.com/Electra-project/electra-api/src/helpers"
 	"github.com/globalsign/mgo/bson"
 )
 
