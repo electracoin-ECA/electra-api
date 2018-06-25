@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/Electra-project/electra-auth/src/helpers"
+	"github.com/Electra-project/electra-api/src/helpers"
 )
 
 func query(method string, params []string, response interface{}) error {
