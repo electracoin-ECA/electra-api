@@ -8,8 +8,8 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/Electra-project/electra-auth/src/helpers"
-	"github.com/Electra-project/electra-auth/src/server"
+	"github.com/Electra-project/electra-api/src/helpers"
+	"github.com/Electra-project/electra-api/src/server"
 	"github.com/joho/godotenv"
 )
 
