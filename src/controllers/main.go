@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"github.com/Electra-project/electra-auth/src/libs/fail"
-	"github.com/Electra-project/electra-auth/src/models"
+	"github.com/Electra-project/electra-api/src/libs/fail"
+	"github.com/Electra-project/electra-api/src/models"
 	"github.com/gin-gonic/gin"
 )
 
