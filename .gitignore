@@ -1,11 +1,5 @@
-*.dll
-*.dylib
-*.exe
-*.exe~
-*.so
-*.test
 .DS_Store
 
+/.env
 /electra-api
-
-/.vscode
+/electra-api.exe
