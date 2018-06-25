@@ -4,10 +4,10 @@ import (
 	"encoding/base64"
 	"strings"
 
-	"github.com/Electra-project/electra-auth/src/helpers"
-	"github.com/Electra-project/electra-auth/src/libs/fail"
-	"github.com/Electra-project/electra-auth/src/libs/rpc"
-	"github.com/Electra-project/electra-auth/src/models"
+	"github.com/Electra-project/electra-api/src/helpers"
+	"github.com/Electra-project/electra-api/src/libs/fail"
+	"github.com/Electra-project/electra-api/src/libs/rpc"
+	"github.com/Electra-project/electra-api/src/models"
 
 	"github.com/gin-gonic/gin"
 )
