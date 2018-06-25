@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"github.com/Electra-project/electra-auth/src/libs/rpc"
+	"github.com/Electra-project/electra-api/src/libs/rpc"
 	"github.com/gin-gonic/gin"
 )
 
