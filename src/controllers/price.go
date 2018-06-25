@@ -71,6 +71,7 @@ func (p PriceController) Get(c *gin.Context) {
 	}
 	helpers.CacheInstance.Set(cacheKey, data, cache.DefaultExpiration)
 
+	c.Header("X-Version", "1.0")
 	c.JSON(http.StatusOK, gin.H{
 		"price":    data.price,
 		"priceBtc": data.priceBtc,
