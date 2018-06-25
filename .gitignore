@@ -1,5 +1,7 @@
 .DS_Store
 
 /.env
+/bin/*
+!/bin/.gitkeep
 /electra-api
 /electra-api.exe
