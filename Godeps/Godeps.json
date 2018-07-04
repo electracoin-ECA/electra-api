@@ -1,118 +1,15 @@
 {
 	"ImportPath": "github.com/Electra-project/electra-api",
 	"GoVersion": "go1.10",
-	"GodepVersion": "v79",
+	"GodepVersion": "v80",
+	"Packages": [
+		"github.com/joho/godotenv"
+	],
 	"Deps": [
-		{
-			"ImportPath": "github.com/gin-contrib/sse",
-			"Rev": "22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae"
-		},
-		{
-			"ImportPath": "github.com/gin-gonic/gin",
-			"Comment": "v1.2-165-gcaf3e35",
-			"Rev": "caf3e350a548af1add9def68087ac53d1d000caa"
-		},
-		{
-			"ImportPath": "github.com/gin-gonic/gin/binding",
-			"Comment": "v1.2-165-gcaf3e35",
-			"Rev": "caf3e350a548af1add9def68087ac53d1d000caa"
-		},
-		{
-			"ImportPath": "github.com/gin-gonic/gin/json",
-			"Comment": "v1.2-165-gcaf3e35",
-			"Rev": "caf3e350a548af1add9def68087ac53d1d000caa"
-		},
-		{
-			"ImportPath": "github.com/gin-gonic/gin/render",
-			"Comment": "v1.2-165-gcaf3e35",
-			"Rev": "caf3e350a548af1add9def68087ac53d1d000caa"
-		},
-		{
-			"ImportPath": "github.com/globalsign/mgo",
-			"Comment": "r2018.04.23",
-			"Rev": "efe0945164a7e582241f37ae8983c075f8f2e870"
-		},
-		{
-			"ImportPath": "github.com/globalsign/mgo/bson",
-			"Comment": "r2018.04.23",
-			"Rev": "efe0945164a7e582241f37ae8983c075f8f2e870"
-		},
-		{
-			"ImportPath": "github.com/globalsign/mgo/internal/json",
-			"Comment": "r2018.04.23",
-			"Rev": "efe0945164a7e582241f37ae8983c075f8f2e870"
-		},
-		{
-			"ImportPath": "github.com/globalsign/mgo/internal/sasl",
-			"Comment": "r2018.04.23",
-			"Rev": "efe0945164a7e582241f37ae8983c075f8f2e870"
-		},
-		{
-			"ImportPath": "github.com/globalsign/mgo/internal/scram",
-			"Comment": "r2018.04.23",
-			"Rev": "efe0945164a7e582241f37ae8983c075f8f2e870"
-		},
-		{
-			"ImportPath": "github.com/golang/protobuf/proto",
-			"Comment": "v1.1.0-10-g05f48f4",
-			"Rev": "05f48f4eaf0e05663b562bab533cdd472238ce29"
-		},
 		{
 			"ImportPath": "github.com/joho/godotenv",
 			"Comment": "v1.2.0-12-g1709ab1",
 			"Rev": "1709ab122c988931ad53508747b3c061400c2984"
-		},
-		{
-			"ImportPath": "github.com/json-iterator/go",
-			"Comment": "1.1.3-18-g8744d7c",
-			"Rev": "8744d7c5c7b40a53e018f78d8c508b3315260b96"
-		},
-		{
-			"ImportPath": "github.com/mattn/go-isatty",
-			"Comment": "v0.0.3-7-g6ca4dbf",
-			"Rev": "6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c"
-		},
-		{
-			"ImportPath": "github.com/modern-go/concurrent",
-			"Comment": "1.0.3",
-			"Rev": "bacd9c7ef1dd9b15be4a9909b8ac7a4e313eec94"
-		},
-		{
-			"ImportPath": "github.com/modern-go/reflect2",
-			"Comment": "1.0.0-11-g58118c1",
-			"Rev": "58118c1ea9161250907268a484af4dd6ed314280"
-		},
-		{
-			"ImportPath": "github.com/patrickmn/go-cache",
-			"Comment": "v2.1.0",
-			"Rev": "a3647f8e31d79543b2d0f0ae2fe5c379d72cedc0"
-		},
-		{
-			"ImportPath": "github.com/ttacon/chalk",
-			"Comment": "v0.1-3-g22c06c8",
-			"Rev": "22c06c80ed312dcb6e1cf394f9634aa2c4676e22"
-		},
-		{
-			"ImportPath": "github.com/ugorji/go/codec",
-			"Comment": "v1.1.1-1-gf3cacc1",
-			"Rev": "f3cacc17c85ecb7f1b6a9e373ee85d1480919868"
-		},
-		{
-			"ImportPath": "golang.org/x/crypto/pbkdf2",
-			"Rev": "8ac0e0d97ce45cd83d1d7243c060cb8461dda5e9"
-		},
-		{
-			"ImportPath": "golang.org/x/sys/unix",
-			"Rev": "2c42eef0765b9837fbdab12011af7830f55f88f0"
-		},
-		{
-			"ImportPath": "gopkg.in/go-playground/validator.v8",
-			"Comment": "v8.18.2",
-			"Rev": "5f1438d3fca68893a817e4a66806cea46a9e4ebf"
-		},
-		{
-			"ImportPath": "gopkg.in/yaml.v2",
-			"Rev": "d670f9405373e636a5a2765eea47fac0c9bc91a4"
 		}
 	]
 }

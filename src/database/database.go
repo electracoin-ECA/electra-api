@@ -8,7 +8,10 @@ import (
 
 // Get a database instance.
 func Get() *mgo.Database {
-	session, err := mgo.Dial(os.Getenv("MONGODB_URI"))
+
+	mongoUri := os.Getenv("MONGODB_URI")
+
+	session, err := mgo.Dial(mongoUri)
 	if err != nil {
 		panic(err)
 	}
