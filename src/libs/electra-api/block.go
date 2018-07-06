@@ -67,12 +67,10 @@ func GetPreviousBlocks(ctx context.Context, topBlockHash string) (chan BlockResp
 			default:
 
 				block, err := GetBlock(blockHash)
-				log.Println(block.Block.Height)
 				if err == nil {
 					blockChan <- *block
 					blockHash = block.Block.Previousblockhash
 				} else {
-					log.Println(err)
 					close(blockChan)
 					return
 				}

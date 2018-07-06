@@ -1,6 +1,7 @@
 .DS_Store
-
+debug
 /.env
+.vscode
 /bin/*
 !/bin/.gitkeep
 /electra-api
