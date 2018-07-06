@@ -3,7 +3,6 @@ package api
 import (
 	"errors"
 	"fmt"
-	"log"
 	"sync"
 
 	"github.com/Electra-project/electra-api/src/helpers"
@@ -42,8 +41,6 @@ func GetAddressDatas(addresses ...string) chan models.Address {
 			wg.Add(1)
 			go func(address string) {
 				addr, err := GetAddressData(address)
-				log.Println(err)
-				log.Println(addr.Addr)
 				if err == nil {
 					addressChan <- *addr
 				}

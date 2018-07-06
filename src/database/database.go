@@ -6,8 +6,10 @@ import (
 	"github.com/globalsign/mgo"
 )
 
-// Get a database instance.
-func Get() *mgo.Database {
+// Database is a singleton to connect to database
+var Database *mgo.Database
+
+func init() {
 
 	mongoUri := os.Getenv("MONGODB_URI")
 
@@ -16,5 +18,11 @@ func Get() *mgo.Database {
 		panic(err)
 	}
 
-	return session.DB(os.Getenv("MONGODB_DATABASE"))
+	Database = session.DB(os.Getenv("MONGODB_DATABASE"))
+
+}
+
+// Get a database instance.
+func Get() *mgo.Database {
+	return Database
 }
