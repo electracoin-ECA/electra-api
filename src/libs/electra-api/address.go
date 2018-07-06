@@ -28,19 +28,27 @@ func GetAddressData(address string) (*models.Address, error) {
 
 }
 
-func GetAddressDatas(addresses ...string) (chan *models.Address, error) {
+// GetAddressDatas gets data related to addresses in the form of a channel
+func GetAddressDatas(addresses ...string) chan models.Address {
 	controlChan := make(chan bool, MaxReq)
 	defer close(controlChan)
 	controlChan = fillChannel(controlChan, MaxReq)
-	// we will handle closing the channel in parent function
-	addressChan := make(chan *models.Address, len(addresses))
-
-	for _, address := range addresses {
-		<-controlChan
-		go func() {
-			GetAddressData()
+	addressChan := make(chan models.Address, len(addresses))
+	go func() {
+		for _, address := range addresses {
+			<-controlChan
+			go func(address string) {
+				addr, err := GetAddressData(address)
+				if err == nil {
+					addressChan <- *addr
+				}
+				controlChan <- true
+			}(address)
 		}
-	}
+	}()
+
+	return addressChan
+
 }
 
 func fillChannel(c chan bool, factor int) chan bool {

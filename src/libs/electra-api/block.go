@@ -1,8 +1,10 @@
 package api
 
 import (
+	"context"
 	"errors"
 	"fmt"
+	"log"
 
 	"github.com/Electra-project/electra-api/src/models"
 
@@ -43,4 +45,42 @@ func GetBlock(blockHash string) (*BlockResponse, error) {
 	}
 
 	return &resp, nil
+}
+
+func GetPreviousBlocks(ctx context.Context, topBlockHash string) (chan BlockResponse, error) {
+	blockChan := make(chan BlockResponse)
+
+	blockresp, err := GetBlock(topBlockHash)
+
+	if err != nil {
+		return nil, err
+	}
+
+	go func(blockresp BlockResponse) {
+		blockHash := blockresp.Block.Previousblockhash
+		for {
+			select {
+			case <-ctx.Done():
+				log.Println("received Cancel on the ctx")
+				close(blockChan)
+				return
+			default:
+
+				block, err := GetBlock(blockHash)
+				log.Println(block.Block.Height)
+				if err == nil {
+					blockChan <- *block
+					blockHash = block.Block.Previousblockhash
+				} else {
+					log.Println(err)
+					close(blockChan)
+					return
+				}
+			}
+
+		}
+	}(*blockresp)
+
+	return blockChan, nil
+
 }

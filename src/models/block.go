@@ -20,6 +20,7 @@ type Block struct {
 	Difficulty        float64 `bson:"difficulty" json:"difficulty"`
 	Blocktrust        string  `bson:"blocktrust" json:"blocktrust"`
 	Chaintrust        string  `bson:"chaintrust" json:"chaintrust"`
+	Nextblockhash     string  `bson:"nextblockhash" json:"nextblockhash"`
 	Previousblockhash string  `bson:"previousblockhash" json:"previousblockhash"`
 	EntropyBit        int     `bson:"entropybit" json:"entropybit"`
 	Modifier          string  `bson:"modifier" json:"modifier"`
