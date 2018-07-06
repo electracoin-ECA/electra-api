@@ -28,10 +28,14 @@ func GetUniqueAddresses(txns ...*models.Transaction) []string {
 	addresses := mapset.NewSet()
 	for _, txn := range txns {
 		for _, vin := range txn.Vin {
-			addresses.Add(vin.Address)
+			if vin.Address != CoinbaseAddress {
+				addresses.Add(vin.Address)
+			}
 		}
 		for _, vout := range txn.Vout {
-			addresses.Add(vout.Address)
+			if vout.Address != CoinbaseAddress {
+				addresses.Add(vout.Address)
+			}
 		}
 	}
 	return toStringSlice(addresses.ToSlice())
