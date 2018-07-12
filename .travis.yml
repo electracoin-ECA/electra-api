@@ -3,6 +3,16 @@ language: go
 go:
   - 1.10.x
 
+services:
+  - docker
+
+env:
+  - MONGODB_URI="localhost"
+  - MONGODB_DATABASE="electra"
+
+before_install:
+  - docker run -d -p 27017:27017 mongo
+
 install:
   - make install
 
