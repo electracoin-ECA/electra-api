@@ -39,6 +39,10 @@ func Router() *gin.Engine {
 		router.PUT("/user", userController.Put)
 	}
 
+	transactionController := new(controllers.TransactionController)
+	router.GET("/transaction/:id", transactionController.Get)
+	router.POST("/transaction", transactionController.Post)
+
 	router.NoRoute(func(c *gin.Context) {
 		c.JSON(404, gin.H{"message": "Not Found"})
 	})
