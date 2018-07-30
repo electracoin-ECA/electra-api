@@ -38,7 +38,7 @@ func GetTransaction(txnId string) (*GetTransactionResponse, error) {
 }
 
 func SendTransaction(rawTxn string) string {
-	txnHash, err := queryBytes("getrawtransaction", []string{
+	txnHash, err := queryBytes("sendrawtransaction", []string{
 		rawTxn,
 	})
 
