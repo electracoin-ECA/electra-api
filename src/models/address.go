@@ -9,9 +9,9 @@ const AddrCollectionName = "address"
 
 type Address struct {
 	Addr     string `json:"address" bson:"address"`
-	Sent     uint
-	Received uint
-	Balance  uint
+	Sent     int
+	Received int
+	Balance  int
 }
 
 func StoreAddressIfNotPresent(b *Address) error {
