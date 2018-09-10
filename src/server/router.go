@@ -26,6 +26,7 @@ func Router() *gin.Engine {
 
 	addrController := new(controllers.AddressController)
 	router.GET("/address/:hash", addrController.Get)
+	router.GET("/address/:hash/transactions", addrController.GetTransactions)
 
 	userGroup := router.Group("user")
 	{

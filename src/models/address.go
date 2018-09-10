@@ -12,7 +12,7 @@ type Address struct {
 	Sent         uint
 	Received     uint
 	Balance      uint
-	Transactions []*TransactionSummary `json:"last_txs" bson:"last_txs"`
+	Transactions []*TransactionSummary `json:"last_txs,omitempty" bson:"last_txs" `
 }
 
 type TransactionSummary struct {
