@@ -8,10 +8,16 @@ import (
 const AddrCollectionName = "address"
 
 type Address struct {
-	Addr     string `json:"address" bson:"address"`
-	Sent     int
-	Received int
-	Balance  int
+	Addr         string `json:"address" bson:"address"`
+	Sent         uint
+	Received     uint
+	Balance      uint
+	Transactions []*TransactionSummary `json:"last_txs,omitempty" bson:"last_txs" `
+}
+
+type TransactionSummary struct {
+	TransactionHash string `json:"addresses" bson:"addresses"`
+	Type            string
 }
 
 func StoreAddressIfNotPresent(b *Address) error {
@@ -21,6 +27,19 @@ func StoreAddressIfNotPresent(b *Address) error {
 	}
 	// idempotent
 	return nil
+}
+
+func GetAddressFromDB(hash string) (*Address, error) {
+	addr := Address{}
+	db := database.Get()
+	collection := db.C(AddrCollectionName)
+	err := collection.Find(bson.M{
+		"address": hash,
+	}).One(&addr)
+	if err != nil {
+		return nil, err
+	}
+	return &addr, nil
 }
 
 func StoreAddress(b *Address) error {
