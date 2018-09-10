@@ -24,6 +24,9 @@ func Router() *gin.Engine {
 	statusController := new(controllers.StatusController)
 	router.GET("/status", statusController.Get)
 
+	addrController := new(controllers.AddressController)
+	router.GET("/address/:hash", addrController.Get)
+
 	userGroup := router.Group("user")
 	{
 		userTokenController := new(controllers.UserTokenController)
