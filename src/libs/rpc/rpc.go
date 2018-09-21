@@ -3,24 +3,25 @@ package rpc
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strings"
 
 	"github.com/Electra-project/electra-api/src/helpers"
 )
 
 func query(method string, params []string, response interface{}) error {
-	daemonURI := "http://127.0.0.1:5788"
+	daemonURI := "http://localhost:5788"
 
-	reqParams, err := json.Marshal(params)
-	if err != nil {
-		helpers.LogErr("Error: " + err.Error())
-
-		return err
+	var quotedParams []string
+	for _, param := range params {
+		quotedParams = append(quotedParams, fmt.Sprintf(`"%s"`, param))
 	}
 
-	reqData := `{"method":"` + method + `","params":` + string(reqParams) + `}`
+	reqData := fmt.Sprintf(`{"method":"%s","params":[%s]}`, method, strings.Join(quotedParams, ","))
 	// helpers.Log(reqData)
+	helpers.LogInfo("using the reqData " + reqData)
 	reqDataBuffer := bytes.NewBuffer([]byte(reqData))
 	req, err := http.NewRequest("POST", daemonURI, reqDataBuffer)
 	req.Header.Set("Content-Type", "application/json")
@@ -37,6 +38,8 @@ func query(method string, params []string, response interface{}) error {
 	defer res.Body.Close()
 
 	bodyBytes, err := ioutil.ReadAll(res.Body)
+	helpers.Log(res.Status + " " + fmt.Sprint(res.StatusCode) + " " + string(bodyBytes))
+
 	if err != nil {
 		helpers.LogErr("Error: " + err.Error())
 
@@ -53,18 +56,22 @@ func query(method string, params []string, response interface{}) error {
 	return nil
 }
 
-func queryBytes(method string, params []string) ([]byte, error) {
-	daemonURI := "http://127.0.0.1:5788"
+func QueryBytes(method string, params []string) ([]byte, error) {
+	bytes, _, err := QueryBytesAndResp(method, params)
+	return bytes, err
+}
 
-	reqParams, err := json.Marshal(params)
-	if err != nil {
-		helpers.LogErr("Error: " + err.Error())
+func QueryBytesAndResp(method string, params []string) ([]byte, *http.Response, error) {
+	daemonURI := "http://localhost:5788"
 
-		return nil, err
+	var quotedParams []string
+	for _, param := range params {
+		quotedParams = append(quotedParams, fmt.Sprintf(`"%s"`, param))
 	}
 
-	reqData := `{"method":"` + method + `","params":` + string(reqParams) + `}`
+	reqData := fmt.Sprintf(`{"method":"%s","params":[%s]}`, method, strings.Join(quotedParams, ","))
 	// helpers.Log(reqData)
+	helpers.LogInfo("using the reqData " + reqData)
 	reqDataBuffer := bytes.NewBuffer([]byte(reqData))
 	req, err := http.NewRequest("POST", daemonURI, reqDataBuffer)
 	req.Header.Set("Content-Type", "application/json")
@@ -75,14 +82,16 @@ func queryBytes(method string, params []string) ([]byte, error) {
 	if err != nil {
 		helpers.LogErr("Error: " + err.Error())
 
-		return nil, err
+		return nil, nil, err
 	}
 
 	defer res.Body.Close()
 
 	bodyBytes, err := ioutil.ReadAll(res.Body)
+	helpers.Log(res.Status + " " + fmt.Sprint(res.StatusCode) + " " + string(bodyBytes))
+
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	return bodyBytes, nil
+	return bodyBytes, res, nil
 }

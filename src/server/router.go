@@ -27,6 +27,9 @@ func Router() *gin.Engine {
 	addrController := new(controllers.AddressController)
 	router.GET("/address/:hash", addrController.Get)
 	router.GET("/address/:hash/transactions", addrController.GetTransactions)
+	transactionController := new(controllers.TransactionController)
+	router.GET("/transaction/:id", transactionController.Get)
+	router.POST("/transaction", transactionController.Post)
 
 	userGroup := router.Group("user")
 	{
@@ -42,10 +45,6 @@ func Router() *gin.Engine {
 		router.POST("/user", userController.Post)
 		router.PUT("/user", userController.Put)
 	}
-
-	transactionController := new(controllers.TransactionController)
-	router.GET("/transaction/:id", transactionController.Get)
-	router.POST("/transaction", transactionController.Post)
 
 	router.NoRoute(func(c *gin.Context) {
 		c.JSON(404, gin.H{"message": "Not Found"})
