@@ -23,22 +23,8 @@ type Detail struct {
 	Fee      float64 `json:"fee,omitempty"`
 }
 
-func GetTransaction(txnId string) (*GetTransactionResponse, error) {
-	var txn *GetTransactionResponse
-	err := query("gettransaction", []string{
-		txnId,
-	}, &txn)
-
-	if err != nil {
-		return nil, err
-	}
-
-	return txn, nil
-
-}
-
 func SendTransaction(rawTxn string) string {
-	txnHash, err := queryBytes("sendrawtransaction", []string{
+	txnHash, err := QueryBytes("sendrawtransaction", []string{
 		rawTxn,
 	})
 

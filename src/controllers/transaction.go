@@ -3,6 +3,8 @@ package controllers
 import (
 	"errors"
 
+	"encoding/json"
+
 	"github.com/Electra-project/electra-api/src/libs/fail"
 	"github.com/Electra-project/electra-api/src/libs/rpc"
 	"github.com/gin-gonic/gin"
@@ -18,9 +20,30 @@ type TransactionController struct{}
 func (s TransactionController) Get(c *gin.Context) {
 
 	txnID := c.Param("id")
-	txn, err := rpc.GetTransaction(txnID)
+
+	body, resp, err := rpc.QueryBytesAndResp("gettransaction", []string{
+		txnID,
+	})
 	if err != nil {
 		fail.Answer(c, err, "transaction")
+		return
+	}
+
+	if resp.StatusCode == 500 {
+		errResp := make(map[string]interface{})
+		err := json.Unmarshal(body, &errResp)
+		if err != nil {
+			c.JSON(500, gin.H{"error": "Internal Error"})
+			return
+		}
+		c.JSON(500, errResp)
+		return
+	}
+
+	var txn rpc.GetTransactionResponse
+	err = json.Unmarshal(body, &txn)
+	if err != nil {
+		c.JSON(500, gin.H{"error": "Internal Error"})
 		return
 	}
 
