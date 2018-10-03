@@ -39,7 +39,7 @@ type PriceController struct{}
 // Get the current CoinMarketCap fiat price of ECA.
 func (p PriceController) Get(c *gin.Context) {
 
-	cacheKey := c.Param("coin-") + "price-" + c.Param("currency")
+	cacheKey := c.Param("coin") + "-price-" + c.Param("currency")
 
 	cacheData, found := helpers.CacheInstance.Get(cacheKey)
 	if found {
