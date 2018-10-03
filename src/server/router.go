@@ -19,7 +19,7 @@ func Router() *gin.Engine {
 	})
 
 	priceController := new(controllers.PriceController)
-	router.GET("/v1/price/:currency", priceController.Get) // Legacy route
+	router.GET("/v1/price/:coin/:currency", priceController.Get) // Legacy route
 	router.GET("/price/:currency", priceController.Get)
 	statusController := new(controllers.StatusController)
 	router.GET("/status", statusController.Get)
