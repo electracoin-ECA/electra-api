@@ -38,13 +38,8 @@ type PriceController struct{}
 
 // Get the current CoinMarketCap fiat price of ECA.
 func (p PriceController) Get(c *gin.Context) {
-	if c.Param("currency") != "usd" {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request."})
 
-		return
-	}
-
-	cacheKey := "price-" + c.Param("currency")
+	cacheKey := c.Param("coin-") + "price-" + c.Param("currency")
 
 	cacheData, found := helpers.CacheInstance.Get(cacheKey)
 	if found {
@@ -56,7 +51,7 @@ func (p PriceController) Get(c *gin.Context) {
 		return
 	}
 
-	url := "https://api.coinmarketcap.com/v1/ticker/electra/?convert=" + c.Param("currency")
+	url := "https://api.coinmarketcap.com/v1/ticker/" + c.Param("coin") + "/?convert=" + c.Param("currency")
 	var inputData requestResponseData
 	hasError := helpers.GetJSON(url, &inputData)
 	if hasError {
